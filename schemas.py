@@ -1,4 +1,5 @@
 from datetime import date
+from typing import Optional
 from pydantic import BaseModel
 
 class UserCreate(BaseModel):
@@ -15,19 +16,19 @@ class UserResponse(BaseModel):
         from_attributes=True
 
 class TransactionCreate(BaseModel):
-    amount:float
-    type:str
-    category:str
-    date:date
-    description:str | None=None
-    user_id:int
+    amount: float
+    type: str
+    category: str
+    date: date
+    description: Optional[str] = None
+    user_id: int
 
 class TransactionUpdate(BaseModel):
-    amount:float | None=None
-    type: str | None=None
-    category:str | None=None
-    date:date | None=None
-    description:str | None=None
+    amount: Optional[float] = None
+    type: Optional[str] = None
+    category: Optional[str] = None
+    date: Optional[date] = None
+    description: Optional[str] = None
 
 class TransactionResponse(BaseModel):
     id: int

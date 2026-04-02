@@ -17,7 +17,7 @@ def create_transaction(transaction: TransactionCreate, db: Session=Depends(get_d
     return new_transaction
 
 @router.get("/",response_model=list[TransactionResponse])
-def get_transactions(db:Session=Depends(get_db())):
+def get_transactions(db:Session=Depends(get_db)):
     return db.query(Transaction).all()
 
 @router.get("/{transaction_id}",response_model=TransactionResponse)
